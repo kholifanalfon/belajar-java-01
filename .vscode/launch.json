@@ -1,25 +1,43 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "node-terminal",
-            "name": "Maven: Run (mvn compile exec:java)",
-            "request": "launch",
-            "command": "mvn compile exec:java",
-            "cwd": "${workspaceFolder}"
-        },
-        {
-            "type": "java",
-            "name": "Java: Run Main (VS Code Debugger)",
-            "request": "launch",
-            "mainClass": "com.kholifan.Main",
-            "projectName": "belajar-sesi1"
-        },
-        {
-            "type": "java",
-            "name": "Java: Run Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot (Debug Console)",
+      "request": "launch",
+      "mainClass": "com.kholifan.belajar_sesi2.BelajarSesi2Application",
+      "projectName": "belajar-sesi2",
+      "args": "--spring.profiles.active=dev",
+      "console": "internalConsole"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot (Integrated Terminal)",
+      "request": "launch",
+      "mainClass": "com.kholifan.belajar_sesi2.BelajarSesi2Application",
+      "projectName": "belajar-sesi2",
+      "args": "--spring.profiles.active=dev",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node-terminal",
+      "name": "Maven: Spring Boot Run",
+      "request": "launch",
+      "command": "./mvnw spring-boot:run",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "node-terminal",
+      "name": "Maven: Spring Boot Run (dev profile)",
+      "request": "launch",
+      "command": "./mvnw spring-boot:run -Dspring-boot.run.profiles=dev",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "java",
+      "name": "Java: Run Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    }
+  ]
 }
