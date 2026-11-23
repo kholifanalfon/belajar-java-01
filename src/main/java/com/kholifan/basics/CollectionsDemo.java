@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class CollectionsDemo {
     private CollectionsDemo() {
@@ -89,6 +91,18 @@ public class CollectionsDemo {
         IO.println("filter = map (kode aktif).   =" + activeCodes);
 
         long total = items.stream().mapToLong(Item::amount).sum();
-        IO.println("sum amount          =" + total);
+        IO.println("sum amount            =" + total);
+
+        Map<String, List<String>> byType = items.stream()
+                .collect(Collectors.groupingBy(Item::type, TreeMap::new,
+                        Collectors.mapping(Item::code, Collectors.toList())));
+        IO.println("groupingBy type       = " + byType);
+
+        var pipeline = items.stream().filter(item -> {
+            IO.println("  memeriksa " + item.code());
+            return item.active();
+        });
+        IO.println("pipeline dibuat, bleum ada yang diperiksa...");
+        IO.println("count = " + pipeline.count());
     }
 }
