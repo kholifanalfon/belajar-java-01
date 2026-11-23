@@ -101,6 +101,6 @@ public class Account {
 
     @Override
     public String toString() {
-        return "%s %-25s %-10s %s".formatted(code, name, active ? "aktif" : "nonaktif");
+        return "%s %-25s %-10s %s".formatted(code, name, type.getLabel(), active ? "aktif" : "nonaktif");
     }
 }
